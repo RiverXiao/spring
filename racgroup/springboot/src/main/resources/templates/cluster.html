@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<HEAD>
+    <style type="text/css">
+
+        table.nolinesLeftAligned {
+            border-width: 0px 0px 0px 0px;
+            border-spacing: 1px 3px 1px 3px;
+            border-color: white white white white;
+        }
+        table.nolinesLeftAligned tr {
+            font-family:Times New Roman;
+            font-size: 16px;
+            font-weight:bold;
+            text-align:center;
+            color:#336699;
+            cursor:hand;
+        }
+        table.nolinesLeftAligned tr:hover {
+            color: black;
+            font-size: 16px;
+        }
+        table.nolinesLeftAligned td {
+            border-width: 0px 0px 0px 0px;
+            padding: 1px 4px 1px 4px;
+            border-color: white white white white;
+            text-align: left;
+            font-size: 16px;
+            font-face: Arial;
+            -moz-border-radius: 0px 0px 0px 0px;
+        }
+    </style>
+    <TITLE>Cluste Information</TITLE>
+    <script type="text/javascript" src="../static/script/jquery-1.6.js"></script>
+    <script type="text/javascript" src="../static/script/json2.js"></script>
+    <script type="text/javascript" src="../static/script/search.js"></script>
+    <script type="text/javascript" src="../static/script/My97DatePicker/WdatePicker.js"></script>
+</HEAD>
+<body>
+<table class="nolinesLeftAligned">
+    <tr>
+        <td><label>Owner: </label></td>
+        <td><input type="text" size="40" maxlength="600" th:value="${cluster.owner}" id="rptno"/></td>
+        <td></td></tr>
+    <tr>
+        <td><label>OS Kernel: </label></td>
+        <td><input type="text" size="40" maxlength="100" th:value="${cluster.osVersion}" id="rptdBy"/></td>
+        <td></td></tr>
+    <tr>
+        <td><label>Host Node: </label></td>
+        <td><input type="text" size="40" maxlength="200" th:value="${cluster.hostNode}" id="org"/></td>
+        <td>The pyhsical host if VM</td></tr>
+    <tr>
+        <td><label>Scan VIP: </label></td>
+        <td><input type="text" size="40" maxlength="200" th:value="${cluster.scan}" id="status"/></td>
+        <td></td></tr>
+    <tr>
+        <td><label>GNS: </label></td>
+        <td><input type="text" size="40" maxlength="200" th:value="${cluster.gns}" id="tags"/></td>
+        <td></td></tr>
+    <tr>
+        <td><label>GNS Domain: </label></td>
+        <td><input type="text" size="40" maxlength="200" th:value="${cluster.gnsDomain}" id="subject"/></td>
+        <td></td></tr>
+    <tr>
+        <td><label>Related SR: </label></td>
+        <td><input type="text" size="40" maxlength="200" th:value="${cluster.SR}" id="subject"/></td>
+        <td></td></tr>
+</table>
+</body>
+</html>
+
+
+

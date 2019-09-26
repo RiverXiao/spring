@@ -1,0 +1,95 @@
+<!--!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"-->
+<HEAD>
+<style type="text/css">
+
+table.nolinesLeftAligned {
+    border-width: 0px 0px 0px 0px;
+    border-spacing: 1px 3px 1px 3px;
+    border-color: white white white white;
+}
+table.nolinesLeftAligned tr {
+    font-family:Times New Roman;
+    font-size: 16px;
+    font-weight:bold;
+    text-align:center;
+    color:#336699;
+    cursor:hand;
+}
+table.nolinesLeftAligned tr:hover {
+    color: black;
+    font-size: 16px;
+}
+table.nolinesLeftAligned td {
+    border-width: 0px 0px 0px 0px;
+    padding: 1px 4px 1px 4px;
+    border-color: white white white white;
+    text-align: left;
+    font-size: 16px;
+    font-face: Arial;
+    -moz-border-radius: 0px 0px 0px 0px;
+}
+</style>
+<TITLE>SEARCH</TITLE>
+<script type="text/javascript" src="../static/script/jquery-1.6.js"></script>
+<script type="text/javascript" src="../static/script/json2.js"></script>
+<script type="text/javascript" src="../static/script/search.js"></script>
+<script type="text/javascript" src="../static/script/My97DatePicker/WdatePicker.js"></script>
+</HEAD>
+<BODY BGCOLOR="white" onload="document.getElementById('rptno').focus();">
+
+<table class="nolinesLeftAligned">
+	<tr>
+		<td><label>Bug No.: </label></td>
+        <td><input type="text" size="40" maxlength="600" value="" id="rptno"/></td>
+        <td>e.g. bug1 bug2</td></tr>
+    <tr>
+    	<td><label>Reported By: </label></td>
+	    <td><input type="text" size="40" maxlength="100" value="" id="rptdBy"/></td>
+		<td>e.g. bugid1 bugid2</td></tr>
+   <tr>
+    	<td><label>Filer in the org of: </label></td>
+	    <td><input type="text" size="40" maxlength="200" value="" id="org"/></td>
+	    <td>e.g. winston.huang</td></tr>	 
+   <tr>
+    	<td><label>Status in: </label></td>
+	    <td><input type="text" size="40" maxlength="200" value="11 17 25 30" id="status"/></td>
+		<td>e.g. 11 30</td></tr>
+   <tr>
+    	<td><label>Tags: </label></td>
+	    <td><input type="text" size="40" maxlength="200" value="" id="tags"/></td>
+		<td>and: tag1 tag2, or: tag1 | tag2</td></tr>
+   <tr>
+    	<td><label>Subject: </label></td>
+	    <td><input type="text" size="40" maxlength="200" value="" id="subject"/></td>
+	    <td>keyword</td></tr>	  
+	<tr> 
+        <td><label>Reported Date: </label></td>
+        <td>From:&nbsp;<input id="from" type="text" onclick="WdatePicker({isShowClear:false,readOnly:true})" size="10"/>&nbsp;&nbsp;To:&nbsp;<input id="to" type="text" onclick="WdatePicker({isShowClear:false,readOnly:true})" size="10"/></td>
+        <td></td></tr>
+   	<tr> 
+        <td><label>Reported in: </label></td>
+        <td><label>Last &nbsp;&nbsp;</label><input type="text" size="3" maxlength="3" value="7" id="reportedDate"/><label>&nbsp;&nbsp;Days &nbsp;&nbsp;</label></td>
+        <td>Will not work if date range was specified</td></tr>
+
+   <tr stype="text-align:center; " >
+   		<td></td><td colspan="2"><button onclick="checkInput();">Summary Report</button></td></tr>
+</table>
+<h4 style="font-family:Times New Roman;">Please cut/paste text below and click on Extract Bug Numbers:</h4>
+<p><TEXTAREA id="bugtxt" wrap="virtual" rows=12 cols=80></TEXTAREA></p>
+<button onclick="extractNumbers();">Extract Bug Numbers</button>&nbsp;&nbsp;&nbsp;&nbsp;
+<button onclick="extractLinks();">Extract Links</button>&nbsp;&nbsp;&nbsp;&nbsp;
+<button onclick="clearText();">Clear</button>
+
+<h4 style="font-family:Times New Roman;">Report Format &nbsp;&nbsp; <p id="bug_count"></p></h4>
+<font face="Times New Roman" size="3"><p id="reportlist"></p></font>
+
+<h4 style="font-family:Times New Roman;">Status Format</h4>
+<font face="Times New Roman" size="3"><p id="statuslist"></p></font>
+
+<h4 style="font-family:Times New Roman;">Wiki Format</h4>
+<font face="Times New Roman" size="3"><p id="wikilist"></p></font>
+
+
+</BODY>
+</HTML>

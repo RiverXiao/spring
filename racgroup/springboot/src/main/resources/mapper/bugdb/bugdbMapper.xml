@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oracle.stcdc.racgroup.mapper.bugdb.BugDBMapper">
+<resultMap id="cluster" type="com.oracle.stcdc.racgroup.entity.Cluster">
+    <id column="id" property="id"/>
+    <result column="node_count" property="nodeCount"/>
+    <result column="os_version" property="osVersion"/>
+    <result column="host_node" property="hostNode"/>
+    <result column="storage" property="storage"/>
+    <result column="owner" property="owner"/>
+    <result column="scan" property="scan"/>
+    <result column="gns" property="gns"/>
+    <result column="scan_ipv6" property="scanIPv6"/>
+    <result column="gns_ipv6" property="gnsIPv6"/>
+    <result column="gns_domain" property="gnsDomain"/>
+    <result column="gns_domain_ipv6" property="gnsDomainIPv6"/>
+    <result column="usage" property="usage"/>
+    <result column="sr" property="SR"/>
+</resultMap>
+<resultMap id="node" type="com.oracle.stcdc.racgroup.entity.Node">
+    <result column="NAME" property="name"/>
+    <result column="CLUSTERID" property="clusterId"/>
+    <result column="ROOT_ACCESS" property="rootAccess"/>
+    <result column="GRID_ACCESS" property="gridAccess"/>
+    <result column="ORACLE_ACCESS" property="oracleAccess"/>
+    <result column="VIP" property="vip"/>
+    <result column="PUBLIC_NIC" property="publicNic"/>
+    <result column="GI_RSP" property="giRsp"/>
+    <result column="DBHOME_RSP" property="dbhomeRsp"/>
+    <result column="DB_RESP" property="dbRsp"/>
+</resultMap>
+
+    <select id="getNodeInfo" resultMap="node" parameterType="int">
+        select *
+         from raccdc_clusters where id = #{id}
+    </select>
+
+    <select id="getInfoByNode" resultMap="cluster"  parameterType="string">
+        select *
+          from raccdc_clusters c
+        where c.id in (select clusterid from raccdc_nodes where name like '%${node}%')
+    </select>
+
+    <select id="getByOwner" resultMap="cluster" parameterType="string">
+        select *
+        from raccdc_clusters c
+        where owner = '#{owner}'
+    </select>
+
+    <update id="modifyOwner" parameterType="map">
+        update raccdc_clusters c
+        set c.owner = '${newOwner}'
+        where c.id = (select clusterid from raccdc_nodes where name = '#{node}')
+    </update>
+</mapper>

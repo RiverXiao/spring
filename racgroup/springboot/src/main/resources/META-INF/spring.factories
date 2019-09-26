@@ -1,0 +1,14 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.oracle.stcdc.racgroup.configuration.HelloWorldAutoConfiguration
+
+
+org.springframework.context.ApplicationContextInitializer=\
+com.oracle.stcdc.racgroup.initializer.LowpriorityInitializer,\
+com.oracle.stcdc.racgroup.initializer.HelloWorldInitializer
+
+
+# Application Listeners
+org.springframework.context.ApplicationListener=\
+com.oracle.stcdc.racgroup.listener.HelloWorldListener,\
+com.oracle.stcdc.racgroup.listener.BeforeConfigFileApplicationListener,\
+com.oracle.stcdc.racgroup.listener.AfterConfigFileApplicationListener
